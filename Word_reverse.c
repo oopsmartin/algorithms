@@ -3,52 +3,66 @@
 void reverse(char* input)
 {
 	char* ptr = input;// paceful pointer
-	int start = 0;
-	int end = 0;
-	int count = 0;
+	char* start = input;
+	char* end = input;
 	while(*ptr++ !='\0')
 	{
-		end++;
-		count++;
+		
 		// split words by space
-		if(*ptr ==' ')
+		if(*ptr ==' ' || *ptr == '\0')
 		{
 			printf("13\n");
-			end--;// end pointers to the end of a word
+			// end pointers to the end of a word
+			
+			end = ptr-1;
+			
+			printf("start is %c ",*start);
+			printf("end is %c\n",*end);
 
 			while(start < end)
 			{
-				printf("ha\n");
-				char tmp = input[start];
-				input[start] = input[end];
-				input[end] = tmp;
+				
+				char tmp = *start;								
+				(*start) = (*end);				
+				(*end) = tmp;				
 				start++;
 				end--;
 				printf("hehe\n");
 			}
+			printf("%s\n",ptr);
+
+			start = ptr+1;
 			
 		}
 
 	}
 	printf("26\n");
-	start = 0;
-	end = count-2;
+	start = input;
+	end = ptr-2;
 	
 	while(start < end)
 	{
-		char tmp = input[start];
-		input[start] = input[end];
-		input[end] = tmp;
+		char tmp = *start;
+		*start = *end;
+		*end = tmp;
 		start++;
 		end--;
 	}
 	printf("38\n");
+	
+}
+
+void testString(char * str)
+{
+	str[0] = '!';
+	printf("now the str is %s\n", (*str));
 }
 
 int main()
 {
-	char* str="what on earth is that";
+	char str[]="what on earth is that";
 	reverse(str);
+	//testString(str);
 	printf("%s\n", str);
 	getchar();
 	getchar();
