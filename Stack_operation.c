@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <malloc.h>
 
+#define MAX 255
+#define INCREMENT 48
 // the function stores a minimum stack and accomplishes push and pop
 
 typedef struct Stack{
@@ -8,18 +10,37 @@ typedef struct Stack{
 	int top;
 }Stack;
 
+Stack* initStack()
+{
+	Stack* root = NULL;
+	int* element = (int*)malloc(sizeof(int)*MAX);
+	root = (Stack*)malloc(sizeof(Stack));
+	root->element = element;
+	root->top = 0;
+
+	return root;
+}
+
 void push(Stack** root, int value)
 {
-	if(*root == NULL){
-		*root = (Stack*)malloc(sizeof(Stack));
-		(*root)->top = 0;
-		*(*root)->element = value;
-		printf("hehe\n");
-	}
-	else{
+	if((*root)->top <= MAX-1){
 		(*root)->top++;
 		*((*root)->element+(*root)->top) = value;
 		printf("push top is %d\n",(*root)->top);
+	}
+	else{
+		int i;
+		int* element = (int*)malloc(sizeof(int)*((*root)->top+INCREMENT));
+		Stack* newStack = (Stack*)malloc(sizeof(Stack));
+		newStack->element = element;
+		newStack->top = (*root)->top;
+		for(i=0;i<(*root)->top;i++){
+			*(newStack->element+i) = *((*root)->element+i);			
+		}
+		*root = newStack;
+		(*root)->top++;
+		*((*root)->element+(*root)->top) = value;
+		
 	}
 }
 
@@ -57,13 +78,17 @@ int main()
 	Stack* min = NULL;
 	int a[] = {3,4,2,1};
 	int sum = (sizeof(a))/sizeof(int);
-	for(i=0;i<sum;i++)
+
+	root = initStack();
+	min = initStack();
+	
+	for(i=0; i<sum; i++)
 	{
 		push(&root,a[i]);
 		push_Min(&min,a[i]);
 	}
 	printf("250\n");
-	for(i=sum;i>0;i--)
+	for(i=sum; i>0; i--)
 	{
 		printf("%d ",pop(&root));
 		printf("%d ",pop(&min));

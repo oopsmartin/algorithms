@@ -1,6 +1,7 @@
 #include <stdio.h>
 #define N 10   //定义排序数组元素个数
-int Qsort(int start,int length,int a[])//start排序的起始，length是要排序序列长度
+
+void Qsort(int start,int length,int a[])//start排序的起始，length是要排序序列长度
 {
 	int x = a[start];
 	int i,j;
@@ -31,6 +32,7 @@ int Qsort(int start,int length,int a[])//start排序的起始，length是要排序序列长度
 		Qsort(i+1,length,a);
 	}
 }
+
 
 int main()
 {
