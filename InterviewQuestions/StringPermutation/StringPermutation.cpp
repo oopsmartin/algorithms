@@ -68,6 +68,9 @@ int _tmain(int argc, _TCHAR* argv[])
     char string4[] = "abc";
     Test(string4);
 
+    getchar();
+    getchar();
+
     return 0;
 }
 
