@@ -6,41 +6,26 @@ void reverse(char* input)
 	char* start = input;
 	char* end = input;
 	while(*ptr++ !='\0')
-	{
-		
+	{		
 		// split words by space
 		// *ptr=='\0' is to handle the last word
 		if(*ptr ==' ' || *ptr == '\0')
 		{
-			printf("13\n");
-			// end pointers to the end of a word
-			
+			// end pointers to the end of a word			
 			end = ptr-1;
-			
-			printf("start is %c ",*start);
-			printf("end is %c\n",*end);
-
 			while(start < end)
-			{
-				
+			{				
 				char tmp = *start;								
 				(*start) = (*end);				
 				(*end) = tmp;				
 				start++;
-				end--;
-				printf("hehe\n");
+				end--;				
 			}
-			printf("%s\n",ptr);
-
-			start = ptr+1;
-			
+			start = ptr+1;			
 		}
-
-	}
-	printf("26\n");
+	}	
 	start = input;
-	end = ptr-2;// minus '\0'
-	
+	end = ptr-2;// minus '\0'	
 	while(start < end)
 	{
 		char tmp = *start;
@@ -48,9 +33,7 @@ void reverse(char* input)
 		*end = tmp;
 		start++;
 		end--;
-	}
-	printf("38\n");
-	
+	}	
 }
 
 void testString(char * str)
