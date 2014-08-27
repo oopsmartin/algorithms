@@ -14,7 +14,7 @@ void reverse(char* input)
 			// end pointers to the end of a word			
 			end = ptr-1;
 			while(start < end)
-			{				
+			{
 				char tmp = *start;								
 				(*start) = (*end);				
 				(*end) = tmp;				
