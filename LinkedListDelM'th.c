@@ -8,7 +8,7 @@ typedef struct LNList{
 	struct LNList* next;
 }LNList;
 
-LNList* remian(LNList** root, int m);
+LNList* remain(LNList** root, int m);
 void deleteM(LNList** root, int m);
 void insert(LNList** root, int value);
 void traverse(LNList* root);
